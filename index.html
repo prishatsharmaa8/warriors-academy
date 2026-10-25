@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Warriors Academy | MMA & Fitness | South Extension, New Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090E;
+      --bg-card: #0F141F;
+      --bg-elevated: #151C2C;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(249, 115, 22, 0.5);
+      --primary: #F97316;
+      --primary-hover: #EA580C;
+      --primary-glow: rgba(249, 115, 22, 0.2);
+      --text: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --green: #10B981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Ambient Header Glow */
+    .hero-glow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(7, 9, 14, 0) 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Header Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(7, 9, 14, 0.85);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+
+    .brand-subtitle {
+      font-size: 0.7rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+    }
+
+    .nav-cta {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 4px 16px var(--primary-glow);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 3.5rem 0 2.5rem 0;
+      border-radius: 20px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(7, 9, 14, 0.6) 0%, rgba(7, 9, 14, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      z-index: -1;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .hero-content {
+      padding: 2.5rem 2rem;
+      max-width: 760px;
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .location-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+      color: #fff;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: #D1D5DB;
+      margin-bottom: 2rem;
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Trust Highlights */
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0 3.5rem 0;
+    }
+
+    .trust-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      border-radius: 14px;
+    }
+
+    .trust-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .trust-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section Styling */
+    .section-head {
+      margin-bottom: 2rem;
+    }
+
+    .section-tag {
+      color: var(--primary);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    /* Booking Card */
+    .booking-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.25rem;
+      margin-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .booking-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .selector-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .select-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: #D1D5DB;
+      padding: 0.75rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .select-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .input-field {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      color: #fff;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: var(--primary);
+    }
+
+    .book-btn-main {
+      width: 100%;
+      background: #25D366;
+      color: #000;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .book-btn-main:hover {
+      background: #20BA5A;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    }
+
+    /* Disciplines Grid */
+    .disciplines-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .discipline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .discipline-img {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(0.85);
+    }
+
+    .discipline-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .discipline-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .discipline-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .discipline-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Schedule Table */
+    .schedule-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .schedule-table th, .schedule-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .schedule-table th {
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+
+    .schedule-table td strong {
+      color: #fff;
+    }
+
+    /* Location & Contact */
+    .location-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      margin-bottom: 4rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .location-card {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .location-info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-info p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .contact-btn-wa {
+      background: #25D366;
+      color: #000;
+    }
+
+    .contact-btn-maps {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: #fff;
+    }
+
+    .contact-btn-maps:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-glow"></div>
+
+  <!-- Header Navigation -->
+  <nav>
+    <div class="brand">
+      <div class="brand-title">THE WARRIORS ACADEMY</div>
+      <div class="brand-subtitle">South Extension II • New Delhi</div>
+    </div>
+    <a href="#book" class="nav-cta">
+      <span>Book Trial</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero Section with Background Photography -->
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="location-pill">
+          <span class="location-dot"></span>
+          229, Masjid Moth Village, South Extension II, New Delhi
+        </div>
+        <h1>Real Martial Arts.<br><span>Real Conditioning.</span></h1>
+        <p>
+          Whether you're stepping onto the mats for the first time to build real functional fitness, learn practical self-defense, or train in combat sports — our coaching focuses on clean fundamentals, technical discipline, and zero ego.
+        </p>
+        <div class="hero-actions">
+          <a href="#book" class="btn-primary">
+            <span>Book A Trial Session</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#schedule" class="btn-secondary">View Batch Timings</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Trust Highlights (Ground Truth) -->
+    <div class="trust-strip">
+      <div class="trust-item">
+        <div class="trust-title">Beginner-Friendly</div>
+        <div class="trust-desc">Step-by-step movement fundamentals and pad drills. No experience required.</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-title">Morning & Evening Batches</div>
+        <div class="trust-desc">Flexible slots tailored for working professionals, students, and athletes.</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-title">Certified Pro Coaching</div>
+        <div class="trust-desc">Structured technical instruction in Boxing, Muay Thai, BJJ, and MMA.</div>
+      </div>
+    </div>
+
+    <!-- Interactive Trial Booking Engine -->
+    <div class="booking-card" id="book">
+      <div class="section-head">
+        <div class="section-tag">Direct WhatsApp Booking</div>
+        <h2 class="section-title">Step Onto The Mats</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.4rem;">
+          Select your training discipline and batch timing to reserve an introductory trial slot directly with our coaches.
+        </p>
+      </div>
+
+      <div class="booking-grid">
+        <!-- Form Left -->
+        <div>
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label>1. Select Discipline</label>
+            <div class="selector-grid">
+              <button type="button" class="select-btn active" onclick="selectSport(this, 'Boxing')">Boxing</button>
+              <button type="button" class="select-btn" onclick="selectSport(this, 'Muay Thai / Kickboxing')">Muay Thai</button>
+              <button type="button" class="select-btn" onclick="selectSport(this, 'Mixed Martial Arts (MMA)')">MMA</button>
+              <button type="button" class="select-btn" onclick="selectSport(this, 'Brazilian Jiu-Jitsu (BJJ)')">BJJ Grappling</button>
+              <button type="button" class="select-btn" onclick="selectSport(this, 'Strength & Conditioning')">Strength & Fit</button>
+              <button type="button" class="select-btn" onclick="selectSport(this, 'Kids Martial Arts')">Kids Program</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>2. Preferred Batch Timing</label>
+            <div class="selector-grid">
+              <button type="button" class="select-btn active" onclick="selectBatch(this, 'Morning Batch (7:00 AM - 9:00 AM)')">Morning: 7:00 AM - 9:00 AM</button>
+              <button type="button" class="select-btn" onclick="selectBatch(this, 'Evening Batch (5:00 PM - 8:30 PM)')">Evening: 5:00 PM - 8:30 PM</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Right -->
+        <div style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label>Your Name</label>
+              <input type="text" id="cust-name" class="input-field" placeholder="e.g. Rahul Sharma">
+            </div>
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label>Contact Number (Optional)</label>
+              <input type="tel" id="cust-phone" class="input-field" placeholder="e.g. +91 98765 43210">
+            </div>
+          </div>
+
+          <div>
+            <button type="button" class="book-btn-main" onclick="sendWhatsAppBooking()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-2.127-.514-1.826-.757-3.003-2.613-3.094-2.735-.091-.122-.74-1.002-.74-1.911 0-.909.477-1.356.647-1.536.17-.18.371-.225.495-.225.124 0 .248.001.356.006.114.005.267-.043.418.32.155.371.531 1.293.577 1.388.046.095.077.206.015.33-.062.124-.093.201-.186.31-.093.109-.196.243-.28.326-.093.093-.19.195-.082.381.108.186.48 0.793 1.03 1.283.708.631 1.306.826 1.492.919.186.093.294.077.402-.047.108-.124.464-.541.588-.727.124-.186.248-.155.417-.093.17.062 1.08.51 1.266.603.186.093.309.139.356.216.046.077.046.451-.098.856z"/></svg>
+              <span>Confirm Trial on WhatsApp</span>
+            </button>
+            <p style="font-size: 0.76rem; color: var(--text-muted); text-align: center; margin-top: 0.5rem;">
+              Opens official WhatsApp to The Warriors Academy (+91 9711688004). Zero spam.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Training Programs Grid -->
+    <div class="section-head">
+      <div class="section-tag">Programs & Disciplines</div>
+      <h2 class="section-title">What We Teach</h2>
+    </div>
+
+    <div class="disciplines-grid">
+      <!-- Boxing -->
+      <div class="discipline-card">
+        <img class="discipline-img" src="https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?auto=format&fit=crop&w=800&q=80" alt="Boxing training">
+        <div class="discipline-body">
+          <div class="discipline-tag">Striking & Footwork</div>
+          <h3 class="discipline-title">Boxing & Kickboxing</h3>
+          <p class="discipline-desc">Focus on crisp jab-cross combinations, defensive slipping, high-volume heavy bag rounds, and rapid conditioning.</p>
+          <a href="#book" class="btn-secondary" style="text-align: center; font-size: 0.85rem; padding: 0.6rem;">Book Boxing Slot</a>
+        </div>
+      </div>
+
+      <!-- Muay Thai -->
+      <div class="discipline-card">
+        <img class="discipline-img" src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=80" alt="Muay Thai training">
+        <div class="discipline-body">
+          <div class="discipline-tag">The Art of 8 Limbs</div>
+          <h3 class="discipline-title">Muay Thai</h3>
+          <p class="discipline-desc">Traditional Thai pad work, roundhouse mechanics, knee strikes, push kicks, and clinch control for complete body conditioning.</p>
+          <a href="#book" class="btn-secondary" style="text-align: center; font-size: 0.85rem; padding: 0.6rem;">Book Muay Thai Slot</a>
+        </div>
+      </div>
+
+      <!-- MMA -->
+      <div class="discipline-card">
+        <img class="discipline-img" src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=800&q=80" alt="MMA Mixed Martial Arts">
+        <div class="discipline-body">
+          <div class="discipline-tag">Integrated Combat</div>
+          <h3 class="discipline-title">Mixed Martial Arts (MMA)</h3>
+          <p class="discipline-desc">Seamless integration of striking, cage wrestling, takedown defense, and ground transitions taught with technical structure.</p>
+          <a href="#book" class="btn-secondary" style="text-align: center; font-size: 0.85rem; padding: 0.6rem;">Book MMA Slot</a>
+        </div>
+      </div>
+
+      <!-- BJJ -->
+      <div class="discipline-card">
+        <img class="discipline-img" src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=80" alt="Brazilian Jiu-Jitsu">
+        <div class="discipline-body">
+          <div class="discipline-tag">Ground Leverage</div>
+          <h3 class="discipline-title">Brazilian Jiu-Jitsu (BJJ)</h3>
+          <p class="discipline-desc">Positional control, escapes, guard retention, and joint submissions. Learn how leverage overcomes raw strength.</p>
+          <a href="#book" class="btn-secondary" style="text-align: center; font-size: 0.85rem; padding: 0.6rem;">Book BJJ Slot</a>
+        </div>
+      </div>
+
+      <!-- Strength & Conditioning -->
+      <div class="discipline-card">
+        <img class="discipline-img" src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80" alt="Strength & Conditioning">
+        <div class="discipline-body">
+          <div class="discipline-tag">Athletic Engine</div>
+          <h3 class="discipline-title">Combat Conditioning</h3>
+          <p class="discipline-desc">Kettlebells, bodyweight calisthenics, core stability, and cardio endurance specifically engineered for fight stamina.</p>
+          <a href="#book" class="btn-secondary" style="text-align: center; font-size: 0.85rem; padding: 0.6rem;">Book Conditioning</a>
+        </div>
+      </div>
+
+      <!-- Kids Program -->
+      <div class="discipline-card">
+        <div style="height: 180px; background: linear-gradient(135deg, #1F2937, #111827); display: flex; align-items: center; justify-content: center;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary);">KIDS & TEENS</div>
+        </div>
+        <div class="discipline-body">
+          <div class="discipline-tag">Discipline & Anti-Bullying</div>
+          <h3 class="discipline-title">Kids Martial Arts</h3>
+          <p class="discipline-desc">Age-appropriate martial arts fundamentals emphasizing motor coordination, focus, respect, and self-defense confidence.</p>
+          <a href="#book" class="btn-secondary" style="text-align: center; font-size: 0.85rem; padding: 0.6rem;">Book Kids Slot</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Batch Schedule Table -->
+    <div class="schedule-box" id="schedule">
+      <div class="section-tag">Batch Schedule</div>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff;">Weekly Training Hours</h3>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.25rem;">
+        Classes run Monday through Saturday. Specialized batches for beginners and advanced athletes.
+      </p>
+
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Session</th>
+            <th>Timing</th>
+            <th>Primary Disciplines</th>
+            <th>Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Morning Batch 1</strong></td>
+            <td>7:00 AM – 8:00 AM</td>
+            <td>Boxing & Kickboxing Conditioning</td>
+            <td>All Levels</td>
+          </tr>
+          <tr>
+            <td><strong>Morning Batch 2</strong></td>
+            <td>8:00 AM – 9:00 AM</td>
+            <td>MMA Striking & Takedown Drills</td>
+            <td>Beginner / Intermediate</td>
+          </tr>
+          <tr>
+            <td><strong>Evening Batch 1</strong></td>
+            <td>5:00 PM – 6:30 PM</td>
+            <td>Muay Thai & Heavy Bag Drills</td>
+            <td>All Levels</td>
+          </tr>
+          <tr>
+            <td><strong>Evening Batch 2</strong></td>
+            <td>6:30 PM – 7:30 PM</td>
+            <td>Brazilian Jiu-Jitsu (BJJ) & Wrestling</td>
+            <td>All Levels</td>
+          </tr>
+          <tr>
+            <td><strong>Evening Batch 3</strong></td>
+            <td>7:30 PM – 8:30 PM</td>
+            <td>Full MMA Sparring & Conditioning</td>
+            <td>Intermediate / Advanced</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Location & Contact -->
+    <div class="location-card">
+      <div class="location-info">
+        <div class="section-tag">Academy Location</div>
+        <h3>The Warriors Academy</h3>
+        <p>
+          <strong>Address:</strong> 229, Masjid Moth Road, near Jain Mandir, Masjid Moth Village, South Extension II, New Delhi, Delhi 110049.<br><br>
+          Conveniently located in South Delhi with easy metro connectivity (South Extension Metro Station on Pink Line).
+        </p>
+      </div>
+
+      <div class="contact-btns">
+        <a href="https://wa.me/919711688004?text=Hi%2C%20I%20have%20an%20inquiry%20about%20joining%20The%20Warriors%20Academy%20South%20Extension." target="_blank" class="contact-btn contact-btn-wa">
+          <span>Chat on WhatsApp (+91 9711688004)</span>
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=The+Warriors+Academy+South+Extension+2+Delhi" target="_blank" class="contact-btn contact-btn-maps">
+          <span>Get Directions on Google Maps</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 The Warriors Academy MMA & Fitness &bull; South Extension II, New Delhi</p>
+      <p style="margin-top: 0.4rem; opacity: 0.6;">All rights reserved &bull; Focus. Discipline. Strength.</p>
+    </div>
+  </footer>
+
+  <script>
+    let selectedSport = 'Boxing';
+    let selectedBatch = 'Morning Batch (7:00 AM - 9:00 AM)';
+
+    function selectSport(btn, sport) {
+      btn.parentElement.querySelectorAll('.select-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSport = sport;
+    }
+
+    function selectBatch(btn, batch) {
+      btn.parentElement.querySelectorAll('.select-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedBatch = batch;
+    }
+
+    function sendWhatsAppBooking() {
+      const name = document.getElementById('cust-name').value.trim() || 'Guest';
+      const phone = document.getElementById('cust-phone').value.trim();
+      
+      let msg = `Hi Coach, I'd like to book a trial session at The Warriors Academy South Extension.\n\n` +
+                `• Sport: ${selectedSport}\n` +
+                `• Preferred Batch: ${selectedBatch}\n` +
+                `• Name: ${name}`;
+      
+      if (phone) {
+        msg += `\n• Phone: ${phone}`;
+      }
+      
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://wa.me/919711688004?text=${encoded}`, '_blank');
+    }
+  </script>
+</body>
+</html>
